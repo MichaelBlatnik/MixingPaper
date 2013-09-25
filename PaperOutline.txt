@@ -1,0 +1,41 @@
+Mixing Paper Outline
+M. Blatnik and P. Karanjkar
+"Quantifying Mixing in a Multiple-feed Fluidized Bed Reactor for Catalytic Fast Pyrolysis of Lignocellulosic Biomass"
+9/25/13
+For publication in AICHE J
+
+1. Introduction
+    a) The objective of this work is to quantify the mixing quality within a multiple-feed fluidized bed reactor used for catalytic fast pyrolysis. The mixing of the catalyst and a given gas stream inlet can be quantified using time-ensemble statistics of the mixture fraction, which is defined in terms of the inert tracer gas proceeding from the inlet.
+	b) Background: EFRI, purpose of the reactor, desired: coke production minimization, aromatics yield maximized, stoichometry
+	c) CFD of a fluidized bed, Complication of mixing from obstacles, other gas inlets, etc (why we need to come up with a way to quantify mixing as opposed to hydrodynamic models)
+	
+2. Theory
+	a) two-phase model (CFD), list conservation equations and closure models
+	b) Tracer gases, Definition of the mixture fraction, Ideal mixture fraction (ideal tracer gas mass fraction)
+	c) Time-ensemble, Volume-weighted statistics (mean and variance), derivation
+	c) Mixing quantification: 6 parameters: bed expansion, % of bed in bubble phase, Catalyst mean, catalyst variance, mixture fraction mean, mixture fraction variance
+	
+3. Results
+	a) Tubeless runs: (4 parameters: bed expansion, % of bed in bubble phase, catalyst mean, catalyst variance), correlation between % of bed in bubble phae and catalyst variance, correlation between catalyst mean and bed expansion (for verification), comparison with experimental presure drop, determination of u_mb from standard deviation of pressure (for use in experiment too).
+	b) Effect of gas distribution between inlets
+	Visualization
+	Statistical Convergence
+	Catalyst volume fraction mean and variance (vs. r, vs. z, vs. bed)
+	Mixture fraction mean and variance (vs. r, vs. z, vs. bed)
+	Comparison with experimental aromatic yield
+	
+4. Discussion
+	a) Discussion of statistical convergence (can determine mixing time scales of the catalyst and of the tracer gases via mixture fraction), interpretations of the transition point (need u_f > u_mf for radial dispersion of the feed tube gas), discussion of statistics (what they tell us, how they tell us that), comparison to experiment (chemistry, aromatic yield)
+	b) CFD Assumptions (2D-axisymmetric, closure models (frictional model), difficult to verify CFD results experimentally, other interpretations and factors to consider (internal reactor chemistry, gas production, etc)
+	c) Extension to other cases (description of the method to use (insert tracer gas (preferably the same gas as the fluidizing gas to avoid density issues), define mixture fraction, determine volume-weighting for given geometry (usually cylindrical, sometimes more complicated methods will be needed (post processing using Fluent instead of manually), determine minimum fluidization velocity (Pressure drop or bed expansion) and minimum bubbling velocity (standard deviation of pressure drop) and try to determine experimentally for comparison, determine statistically-steady time period, analyze statistics under different operatin cases (% of flow through the given inlet, as a function of total flow, as a function of catalyst height, etc)
+	
+5. Conclusions
+	a) Summary of the experiment, CFD, and quantification method.
+	b) Summary of results
+	c) Further verification tests (more standard cases involving simpler chemical reactions, comparison of actual minimum bubbling velocities with experimentally determined u_mb
+	d) Extension to other cases
+	e) Closing statements, significance of study
+
+
+
+
