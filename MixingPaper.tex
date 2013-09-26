@@ -1,0 +1,137 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Michael Blatnik
+% This paper is under development for the American Institute of Chemical Engineers Journal, authored by Michael Blatnik (UMass Amherst) and Pranav Karanjkar (University of Wisconsin) to show how mixing is quantified within a biomass fluidized bed reactor
+% 9/26/13
+% Paper is written in the document markup language LaTeX and MikTeX for Windows is used to run the script and produce the pdf
+% Comments within the document (between \begin{document} and \end{document}) should be denoted by your initials followed by your comment (e.g.  % MTB: Here is a comment.)
+% Changes should be made by first registering on github, then download Github for Windows (or use Linux commands). Please provide me with your github user name so I can allow you to make changes to the document. Then, visit the MixingPaper repository, https://github.com/MichaelBlatnik/MixingPaper , pull the repository (using Clone to Desktop), which puts it on your local system. Make changes to the MixingPaper.tex document, commit the changes, and push (sync) them to the server. Please ask me if you have any questions.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Title information
+\title{Quantifying Mixing in a Multiple-feed Fluidized Bed Reactor for Catalytic Fast Pyrolysis of Lignocellulosic Biomass}
+\author{Michael T. Blatnik, Pranav Karanjkar, Stephen M. de Bruyn Kops, and George W. Huber}
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Document class. Default "article" class at 12pt font used for now. There is no formal AICHE J style format file
+\documentclass[12pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Load pre-defined packages
+\usepackage{fullpage}
+\usepackage{amssymb,amsmath,bm}
+\usepackage{graphics,psfrag}
+\usepackage{graphicx,psfrag}
+\usepackage{comment}
+\usepackage{nomencl}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Define set of commands to shorten the notation in equations
+\newcommand\divg{\nabla\cdot}			% Divergence
+\newcommand{\abs}[1]{\lvert#1\rvert}	% Absolute values (1 input: inside of abs values)
+\newcommand\grad{\nabla}			% Gradient
+\newcommand{\vf}[1]{\alpha_{#1}}		% Volume fraction (using alpha) (1 input: s or g (solids or gas))
+\newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}		% 1st partial derivative (2 inputs: top, bottom)
+\newcommand{\pdern}[3]{\frac{\partial^#3#1}{\partial#2^#3}}	% nth partial derivative (3 inputs: order, top, bottom)
+\newcommand{\dbar}[1]{\bar{\bar{#1}}}				% Double bar (tensor), (1 input)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Custom code to run the nomenclature package (see http://www.freiheitsfreund.de/en/2010/10/automatically-run-makeindex-from-within-a-latex-document-with-write18/)
+\def\execute{%
+\begingroup
+\catcode`\%=12
+\catcode`\\=12
+\executeaux}
+\def\executeaux#1{\immediate\write18{#1}\endgroup}
+% With this customized command execute the necessary command to run makeindex with the necessary parameters for the nomenclature package
+% During the first run of LaTeX by the package nomenclature a file, called YOURLATEXFILEMAME.nlo is generated.
+% During the second run of LaTeX, with this line makeindex generates a YOURLATEXFILENAME.nls of that.
+\execute{makeindex MixingPaper.nlo -s nomencl.ist -o MixingPaper.nls}
+% The next commands during the first run of LaTex writes the .nlo file.
+% Do not change the order! Otherwise the file will be open aleady and the now first of the two commands fails silently!
+\makenomenclature
+\newskip\nomitemsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Begin the document
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Introduction section (unnumbered, using * to make unnumbered)
+\section*{Introduction}
+The objective of this work is to quantify the mixing quality within a multiple-feed fluidized bed reactor used for catalytic fast pyrolysis (CFP) of lignocellulosic biomass. The reactor under development is in experimental stages and utilizes CFP to convert biomass into gasoline-range aromatics in a single step reaction \cite{karanjkar13}. A non-standard inlet, a downward-facing, central, vertical feed tube, is used to input the cellulose deep into the reactor. The cellulose is oxygenated into vapors before entering the reactor \cite{lin12}, and these vapors then enter the catalyst pores wherein they are converted to aromatics. Due to the high operating temperatures (773 K) necessary for CFP, an enclosed and insulated reactor must be used, which means the hydrodynamic mixing of the catalyst, the fluidizing gas (an inert He gas), and the biomass gas stream can only be indirectly measured from the aromatic yield and other byproducts. Computational fluid dynamics (CFD) simulations using ANSYS$\copyright$ Fluent, version 14.0, were used to simulate the internal hydrodynamics by neglecting chemical reactions, considering only a two-phase mixture as well as inert tracer gases from each inlet. From here, the mixing of the catalyst and a given gas stream inlet was quantified using time-ensemble statistics of the mixture fraction, which is defined in terms of an inert tracer gas proceeding from the inlet of interest \cite{blatnik13}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% % Theory section
+\section*{Theory}
+\subsection*{Two fluid model}
+The Eulerian-Eulerian two fluid model (TFM) treats both the solids and gas phase as interpenetrating continua each occupying a percent ($\vf{s}$ and $\vf{g}$, respectively) of a computational cell in space \cite{gidaspow94}. By conservation of mass, $\vf{s}+\vf{g}=1$ within every cell. Each phase is treated as a liquid with the catalyst having a much greater density ($\rho_s$) than the gas ($\rho_g$). The kinetic theory of granular flow (KTGF) is used to account for the catalyst viscosity, particle collisions, frictional stresses between particles, and the drag between the particles and the gas \cite{chapman70,jenkins83,lun84}.
+% MTB: After new variables or symbols are used for the first time, I insert the nomenclature for the symbol, which is eventually compiled into the nomenclature section at the end
+\nomenclature{$\vf{k}$}{Volume fraction of phase $k$ (dimensionless)}%
+\nomenclature{$\rho_k$}{Density of phase/species $k$ (kg/m$^3$)}%
+
+\subsection*{Governing equations}
+The governing conservation equations of mass and momentum utilized in ANSYS Fluent are derived by Ishii \cite{ishii75}, and these equations were rewritten for gas-solids flows by Enwald et al. \cite{enwald96}. The conservation equations as reproduced in van Wachem et. al \cite{vanwachem01} are shown in this work. The continuity equations for the solids and gas phases are listed below, respectively, as
+\begin{equation}\label{eq:mass_s}
+	\pder{\vf{s}}{t}
+	+\divg(\vf{s} \boldsymbol{v}_{s})
+	=0
+\end{equation}
+and
+\begin{equation}\label{eq:mass_g}
+	\pder{\vf{g}}{t}
+	+\divg(\vf{g} \boldsymbol{v}_{g})
+	=0;
+\end{equation}
+
+Enwald et al.'s \cite{enwald96} conservation of momentum equations are shown below for the solids and gas, respectively:
+\begin{equation}\label{eq:momentum_s}
+	\rho_{s}\vf{s}\left(\pder{\boldsymbol{v}_{s}}{t}
+	+\boldsymbol{v}_{s}\cdot\grad\boldsymbol{v}_{s}\right)
+	=
+	-\vf{s}\grad{P}+\divg\dbar{\tau}_{s}-\grad{P_s}
+	+\vf{s}\rho_{s}\boldsymbol{s}
+	+\beta(\boldsymbol{v}_{g}
+	-\boldsymbol{v}_{s})
+\end{equation}
+and
+\begin{equation}\label{eq:momentum_g}
+	\rho_{g}\vf{g}\left(\pder{\boldsymbol{v}_{g}}{t}
+	+\boldsymbol{v}_{g}\cdot\grad\boldsymbol{v}_{g}\right)
+	=-\vf{g}\grad{P}+\divg\vf{g}\dbar{\tau}_{g}
+	+\vf{g}\rho_{g}\boldsymbol{g}
+	-\beta(\boldsymbol{v}_{g}
+	-\boldsymbol{v}_{s})
+\end{equation}
+Conservation of energy as given in the ANSYS Fluent Theory Guide \cite{fluenttheoryguide09} is given for phase $k$ as
+\begin{equation}\label{eq:energy_k}
+\pder{}{t}(\alpha_k\rho_k h_k)+\divg(\alpha_k\rho_k\boldsymbol{v}_k h_k)=\alpha_k\pder{P_k}{t}+\dbar{\tau}_{k}:\grad{\boldsymbol{v}_k}-\divg\boldsymbol{q}_k,
+\end{equation}
+where $h_k$ is the specific enthalpy of phase $k$. See the notation for the definition of each of the terms in these equations.
+\nomenclature{$d_s$}{Particle diameter (m)}%
+\nomenclature{$\boldsymbol{v}_{k}$}{Velocity of phase $k$ (cm/s)}%
+\nomenclature{$t$}{Time (s)}%
+\nomenclature{$\dbar{\tau}_{k}$}{Viscous stress tensor of phase $k$ (N/m$^2$)}%
+\nomenclature{$\beta$}{Interphase drag coefficient (kg/(m$^3\cdot$s))}%
+\nomenclature{$P$}{Pressure (Pa)}%
+\nomenclature{$P_s$}{Solids pressure (Pa)}%
+\nomenclature{$\boldsymbol{g}$}{Gravity constant (m/s$^2$)}%
+\nomenclature{$\boldsymbol{q}_k$}{Heat flux of phase $k$ (W/m$^2$)}%
+\nomenclature{$h_k$}{Specific enthalpy of phase $k$ (J/kg)}%
+
+
+\begin{comment}
+%Figure template
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.80\textwidth,clip=true]{blank.eps}
+	\caption{Template for a figure, you will need to add the figure.}
+	\label{fig:blank}
+\end{figure}
+I refer to a figure with \ref{fig:blank}.
+\end{comment}
+
+\newpage
+% MTB: Print nomenclature at the end of the document
+\printnomenclature
+
+% MTB: AICHEJ.bst bib style file downloaded and used from http://www.tex.ac.uk/ctan/biblio/bibtex/contrib/misc/aichej.bst
+\bibliographystyle{aichej}
+\bibliography{MixingPaper}
+
+\end{document}

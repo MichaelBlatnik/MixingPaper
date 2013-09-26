@@ -1,0 +1,28 @@
+\begin{thenomenclature} 
+
+ \nomgroup{A}
+
+  \item [{$\beta$}]\begingroup Interphase drag coefficient (kg/(m$^3\cdot$s))\nomeqref {5}
+		\nompageref{2}
+  \item [{$\boldsymbol{g}$}]\begingroup Gravity constant (m/s$^2$)\nomeqref {5}
+		\nompageref{2}
+  \item [{$\boldsymbol{q}_k$}]\begingroup Heat flux of phase $k$ (W/m$^2$)\nomeqref {5}
+		\nompageref{2}
+  \item [{$\boldsymbol{v}_{k}$}]\begingroup Velocity of phase $k$ (cm/s)\nomeqref {5}
+		\nompageref{2}
+  \item [{$\dbar{\tau}_{k}$}]\begingroup Viscous stress tensor of phase $k$ (N/m$^2$)\nomeqref {5}
+		\nompageref{2}
+  \item [{$\rho_k$}]\begingroup Density of phase/species $k$ (kg/m$^3$)\nomeqref {0}
+		\nompageref{2}
+  \item [{$\vf{k}$}]\begingroup Volume fraction of phase $k$ (dimensionless)\nomeqref {0}
+		\nompageref{2}
+  \item [{$d_s$}]\begingroup Particle diameter (m)\nomeqref {5}
+		\nompageref{2}
+  \item [{$h_k$}]\begingroup Specific enthalpy of phase $k$ (J/kg)\nomeqref {5}
+		\nompageref{2}
+  \item [{$P$}]\begingroup Pressure (Pa)\nomeqref {5}\nompageref{2}
+  \item [{$P_s$}]\begingroup Solids pressure (Pa)\nomeqref {5}
+		\nompageref{2}
+  \item [{$t$}]\begingroup Time (s)\nomeqref {5}\nompageref{2}
+
+\end{thenomenclature}

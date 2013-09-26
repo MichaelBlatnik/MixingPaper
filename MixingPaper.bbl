@@ -1,0 +1,68 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+
+\bibitem{karanjkar13}
+Karanjkar P, Coolman RJ, Blatnik MT, Almalkie S, de~Bruyn~Kops SM, Mountziaris
+  TJ, Conner WC, Huber GW.
+\newblock Hydrodynamics of a fluidized bed reactor for catalytic fast pyrolysis
+  of cellulose to make green aromatics. 2013.
+\newblock In preparation.
+
+\bibitem{lin12}
+Lin Y, Cho J, Davis JM, Huber GW.
+\newblock Reaction-transport model for the pyrolysis of shrinking cellulose
+  particles.
+\newblock \emph{Chemical Engineering Science}. 2012;\hspace{0pt}74:160--171.
+
+\bibitem{blatnik13}
+Blatnik MT.
+\newblock Optimization of Mixing in a Simulated Biomass Bed Reactor with a
+  Center Feeding Tube.
+\newblock Master's thesis, University of Massachusetts Amherst. 2013.
+
+\bibitem{gidaspow94}
+Gidaspow D.
+\newblock \emph{Multiphase flow and fluidization}.
+\newblock Academic Press, San Diego. 1994.
+
+\bibitem{chapman70}
+Chapman S, Cowling TS.
+\newblock \emph{The mathematical theory of non-uniform gases}.
+\newblock Cambridge University Press. 1970.
+
+\bibitem{jenkins83}
+Jenkins JT, Savage SB.
+\newblock A Theory for the Rapid Flow of Identical Smooth, Nearly Elastic
+  Spherical Particles.
+\newblock \emph{Journal of Fluid Mechanics}. 1983;\hspace{0pt}130:187--202.
+
+\bibitem{lun84}
+Lun CKK, Savage SB, Jeffrey DJ, Chepurniy N.
+\newblock KINETIC THEORIES FOR GRANULAR FLOW - INELASTIC PARTICLES IN
+  COUETTE-FLOW AND SLIGHTLY INELASTIC PARTICLES IN A GENERAL FLOWFIELD.
+\newblock \emph{Journal of Fluid Mechanics}. 1984;\hspace{0pt}140:223--256.
+
+\bibitem{ishii75}
+Ishii M.
+\newblock \emph{Thermo-Fluid Dynamic Theory of Two-Phase Flow}.
+\newblock Direction des Etudes et Recherches d'Electricit\`{o} de France.
+  Eyrolles. 1975.
+
+\bibitem{enwald96}
+Enwald H, Peirano E, Almstedt AE.
+\newblock Eulerian Two-Phase Flow Theory Applied to Fluidization.
+\newblock \emph{International Journal of Multiphase Flow}.
+  1996;\hspace{0pt}22:21.
+
+\bibitem{vanwachem01}
+van Wachem BGM, Schouten JC, van~den Bleek CM, Krishna R, Sinclair JL.
+\newblock Comparative analysis of {CFD} models of dense gas-solid systems.
+\newblock \emph{American Institute of Chemical Engineers Journal}.
+  2001;\hspace{0pt}47(5):1035--1051.
+
+\bibitem{fluenttheoryguide09}
+ANSYS, Inc.
+\newblock \emph{ANSYS FLUENT 12.0 Theory Guide}. 2009.
+
+\end{thebibliography}
